@@ -1,9 +1,10 @@
 {
   "reporter": [
-    "text"
+    "text",
+	  "html"
   ],
-  "lines": [80,95],
-  "branches": [80,90],
-  "statements": [80,95],
-  "functions": [80,100]
+  "lines": [85,95],
+  "branches": 90,
+  "statements": [85,95],
+  "functions": [85,100]
 }

@@ -34,8 +34,8 @@ await test('Mock env var', async (t) => {
   await t.test('Should be equal to some', () => {
     const val = app.val
     assert.strictEqual(val, process.env.VAL, 'No good')
-    clearModule(mod, './src')
   })
+  clearModule(mod, './src')
 })
 await test('Mock env var', async (t) => {
   process.env.VAL = 'new var'
@@ -43,5 +43,14 @@ await test('Mock env var', async (t) => {
   await t.test('Should be equal to new var', () => {
     const val = app.val
     assert.strictEqual(val, process.env.VAL, 'No good')
+  })
+  clearModule(mod, './src')
+})
+await test('Mock env var = undefined', async (t) => {
+  delete process.env.VAL
+  const app = requireModule(mod)
+  await t.test('Should be equal to new var', () => {
+    const val = app.val
+    assert.strictEqual(val, undefined, 'No good')
   })
 })

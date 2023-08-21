@@ -13,10 +13,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 18.15.0
 
@@ -25,9 +25,10 @@ jobs:
 
       - name: Run Tests
         run: npx c8 --check-coverage npx tsx --test --test-reporter tap --test-reporter-destination tests.tap --test-reporter spec --test-reporter-destination tests.spec tests/**/*.ts
-
+    
       - name: Upload test results artifact
-        uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v3
         with:
           name: tests-results
           path: |

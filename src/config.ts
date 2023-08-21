@@ -1,0 +1,1 @@
+export const VAL = process.env.VAL

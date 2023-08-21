@@ -1,0 +1,44 @@
+{
+	"name": "c8",
+	"description": "test dinamic import",
+	"main": "src/app.ts",
+	"author": "timokhovim@gmail.com",
+	"license": "ISC",
+	"private": true,
+	"directories": {
+		"test": "tests"
+	},
+	"devDependencies": {
+		"@types/node": "^18.15.11",
+		"@typescript-eslint/eslint-plugin": "^6.0.0",
+		"@typescript-eslint/parser": "^6.0.0",
+		"c8": "^8.0.1",
+		"concurrently": "^8.0.1",
+		"eslint": "^8.44.0",
+		"eslint-config-google": "^0.14.0",
+		"eslint-config-prettier": "^8.8.0",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.3",
+		"nodemon": "^2.0.22",
+		"prettier": "3.0.0",
+		"tsx": "^3.12.7",
+		"typescript": "^5.1.6"
+	},
+	"lint-staged": {
+		"*.ts*": "prettier --ignore-unknown --write"
+	},
+	"scripts": {
+		"build": "tsc",
+		"prestart": "npm run build",
+		"start": "node build/src/app.js",
+		"dev": "concurrently \"npx --watch\" \"nodemon -L\"",
+		"test": "tsx --test --test-reporter=spec tests/**/*.ts",
+		"format": "prettier --write src/**/*.ts*",
+		"lint": "eslint . --max-warnings 0 --report-unused-disable-directives",
+		"lint:fix": "npm run lint -- --fix",
+		"prepare": "husky install",
+		"coverage": "c8 --check-coverage npm test"
+	},
+	"type": "module",
+	"version": "0.0.1"
+}

@@ -24,4 +24,14 @@ jobs:
         run: npm install --save-dev
 
       - name: Run Tests
-        run: npm test
+        run: npx c8 --check-coverage npx tsx --test --test-reporter tap --test-reporter-destination tests.tap --test-reporter spec --test-reporter-destination tests.spec tests/**/*.ts
+
+      - name: Upload test results artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: tests-results
+          path: |
+            tests.tap
+            tests.spec
+            ./coverage
+

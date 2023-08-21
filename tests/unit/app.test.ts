@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import {test} from 'node:test'
 import assert from 'node:assert'
-import { createRequire } from 'node:module'
+import {createRequire} from 'node:module'
 import path from 'node:path'
 
 const require = createRequire(import.meta.url)
@@ -17,16 +17,15 @@ function clearModule(id: string, src: string) {
         clearModule(child.filename, src)
     }
   }
-  console.log(module)
   delete require.cache[require.resolve(id)]
 }
 
-function requireModule (id: string) {
+function requireModule(id: string) {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return require(id)
 }
 
-const mod ='../../src/app.js'
+const mod = '../../src/app.js'
 
 await test('Mock env var', async (t) => {
   process.env.VAL = 'some'
@@ -36,7 +35,7 @@ await test('Mock env var', async (t) => {
     const val = app.val
     assert.strictEqual(val, process.env.VAL, 'No good')
     clearModule(mod, './src')
-    })
+  })
 })
 await test('Mock env var', async (t) => {
   process.env.VAL = 'new var'

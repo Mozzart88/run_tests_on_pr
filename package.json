@@ -25,7 +25,7 @@
 		"typescript": "^5.1.6"
 	},
 	"lint-staged": {
-		"*.ts*": "prettier --ignore-unknown --write"
+		"*.ts*": ["prettier --ignore-unknown --write"]
 	},
 	"scripts": {
 		"build": "tsc",

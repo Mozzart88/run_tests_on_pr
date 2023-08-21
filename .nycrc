@@ -2,8 +2,8 @@
   "reporter": [
     "text"
   ],
-  "lines": 95,
-  "branches": 90,
-  "statements": 95,
-  "functions": 100
+  "lines": [80,95],
+  "branches": [80,90],
+  "statements": [80,95],
+  "functions": [80,100]
 }
